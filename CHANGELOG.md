@@ -1,3 +1,12 @@
+## [2.7.17](https://github.com/vuejs/vue/compare/v2.7.16...v2.7.17) (2025-04-17)
+
+
+### Features
+
+* **compiler-sfc:** compileStyle和compileStyleAsync支持preprocessCustomRequire选项, 传入自定义预处理器加载逻辑 ([d9b51fa](https://github.com/vuejs/vue/commit/d9b51fa48ef47a513da36e4ad8f5d4045a7aeb15))
+
+
+
 ## [2.7.16 Swan Song](https://github.com/vuejs/vue/compare/v2.7.16-beta.2...v2.7.16) (2023-12-24)
 
 
