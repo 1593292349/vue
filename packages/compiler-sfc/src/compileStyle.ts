@@ -18,6 +18,7 @@ export interface SFCStyleCompileOptions {
   trim?: boolean
   preprocessLang?: string
   preprocessOptions?: any
+  preprocessCustomRequire?: (id: string) => any
   postcssOptions?: any
   postcssPlugins?: any[]
   isProd?: boolean
@@ -137,11 +138,10 @@ function preprocess(
   return preprocessor(
     options.source,
     options.map,
-    Object.assign(
-      {
-        filename: options.filename
-      },
-      options.preprocessOptions
-    )
+    {
+      filename: options.filename,
+      ...options.preprocessOptions,
+    },
+    options.preprocessCustomRequire,
   )
 }

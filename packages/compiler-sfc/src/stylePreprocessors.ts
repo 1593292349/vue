@@ -9,7 +9,8 @@ export type StylePreprocessor = (
     [key: string]: any
     additionalData?: string | ((source: string, filename: string) => string)
     filename: string
-  }
+  },
+  preprocessCustomRequire?: (id: string) => any
 ) => StylePreprocessorResults
 
 export interface StylePreprocessorResults {
@@ -20,8 +21,13 @@ export interface StylePreprocessorResults {
 }
 
 // .scss/.sass processor
-const scss: StylePreprocessor = (source, map, options) => {
-  const nodeSass = require('sass')
+const scss: StylePreprocessor = (
+  source,
+  map,
+  options,
+  load = require,
+) => {
+  const nodeSass = load('sass')
   const finalOptions = {
     ...options,
     data: getSource(source, options.filename, options.additionalData),
@@ -48,15 +54,25 @@ const scss: StylePreprocessor = (source, map, options) => {
   }
 }
 
-const sass: StylePreprocessor = (source, map, options) =>
+const sass: StylePreprocessor = (
+  source,
+  map,
+  options,
+  load,
+) =>
   scss(source, map, {
     ...options,
     indentedSyntax: true
-  })
+  }, load)
 
 // .less
-const less: StylePreprocessor = (source, map, options) => {
-  const nodeLess = require('less')
+const less: StylePreprocessor = (
+  source,
+  map,
+  options,
+  load = require,
+) => {
+  const nodeLess = load('less')
 
   let result: any
   let error: Error | null = null
@@ -88,8 +104,13 @@ const less: StylePreprocessor = (source, map, options) => {
 }
 
 // .styl
-const styl: StylePreprocessor = (source, map, options) => {
-  const nodeStylus = require('stylus')
+const styl: StylePreprocessor = (
+  source,
+  map,
+  options,
+  load = require,
+) => {
+  const nodeStylus = load('stylus')
   try {
     const ref = nodeStylus(source)
     Object.keys(options).forEach(key => ref.set(key, options[key]))
