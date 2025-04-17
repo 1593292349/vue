@@ -7,6 +7,9 @@
   "jsdelivr": "browser.js",
   "browser": "browser.js",
   "types": "types/index.d.ts",
+  "publishConfig": {
+    "registry": "http://192.168.20.250/nexus/repository/NPM-lexmis/"
+  },
   "files": [
     "types/*.d.ts",
     "*.js"

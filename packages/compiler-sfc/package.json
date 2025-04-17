@@ -4,6 +4,9 @@
   "description": "compiler-sfc for Vue 2",
   "main": "dist/compiler-sfc.js",
   "types": "dist/compiler-sfc.d.ts",
+  "publishConfig": {
+    "registry": "http://192.168.20.250/nexus/repository/NPM-lexmis/"
+  },
   "files": [
     "dist"
   ],
