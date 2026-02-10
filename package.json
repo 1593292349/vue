@@ -9,7 +9,7 @@
   "jsdelivr": "dist/vue.js",
   "typings": "types/index.d.ts",
   "publishConfig": {
-    "registry": "http://192.168.20.250/nexus/repository/NPM-lexmis/"
+    "registry": "http://localhost:8081/repository/npm-host/"
   },
   "files": [
     "src",
